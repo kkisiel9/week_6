@@ -4,6 +4,10 @@ import random
 # created five functions
 
 def retrieve_user_response():
+    """
+    This function uses a dictionary to validate the user's response
+    :return:
+    """
     user_options = {'R', 'P','S'}
     # prompt for user
     user_response = input("Please select R, P or S: ").upper()
@@ -68,12 +72,17 @@ def play_game():
     welcome = "Rock,Paper or Scissors?"
     print(welcome)
 
-    user_input = retrieve_user_response()
-    converted_user_input = convert_user_response(user_input)
+    while True:
+            user_input = retrieve_user_response()
+            if user_input is not None:
+                break  # Exit loop if input is valid
+            print("Invalid choice. Please try again.")
 
+
+    converted_user_input = convert_user_response(user_input)
     computer_input = retrieve_computer_response()
     converted_computer_input = convert_computer_response(computer_input)
-    
+
     print(f"You have selected {converted_user_input}")
     # prints the computer's choice (converted from integer)
     print(f"The computer has chosen {converted_computer_input}")
