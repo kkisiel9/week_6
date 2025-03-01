@@ -1,7 +1,6 @@
 import random
 import time
-from .choice_display import display_choice
-
+from choice_display import display_choice
 # Special Moves
 SPECIAL_MOVES = {
     "T": "Thanos"  # Thanos evaporates everything but can only be used once per game
@@ -157,3 +156,33 @@ def play_game():
 
     print("\nThanks for playing! Final Scores:")
     print(f"Player 1: {player1_score}, {num_players == 1 and 'Computer' or 'Player 2'}: {player2_score}")
+
+
+def main():
+    # Test player_choice function
+    print("Testing player_choice function...")
+    test_choice = player_choice("Player 1", special_move_available=True)
+    print(f"Player 1 chose: {test_choice}")
+
+    # Initialize variables for play_round
+    num_players = 1  # 1 player (vs computer)
+    player1_score = 0
+    player2_score = 0
+    player1_special_move_available = True
+    player2_special_move_available = True
+
+    # Test play_round function
+    print("\nTesting play_round function...")
+    player1_score, player2_score, player1_special_move_available, player2_special_move_available = play_round(
+        num_players, player1_score, player2_score, player1_special_move_available, player2_special_move_available
+    )
+
+    # Print results
+    print(f"\nUpdated Scores - Player 1: {player1_score}, Computer: {player2_score}")
+    print(f"Player 1 special move available: {player1_special_move_available}")
+    print(f"Player 2 special move available: {player2_special_move_available}")
+
+# Run the main function
+if __name__ == "__main__":
+    main()
+
