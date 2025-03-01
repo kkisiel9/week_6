@@ -1,41 +1,42 @@
 import random
 # import module: random variable generator
 
-# created three functions
-def user_conversion(user_response):
+# created five functions
+
+def retrieve_user_response():
+    user_options = {'R', 'P','S'}
+    # prompt for user
+    user_response = input("Please select R, P or S: ").upper()
+    # input function returns outputs value entered by the user
+    if user_response in user_options:
+        return user_response
+    return None
+
+def convert_user_response(user_response):
     """
     This function uses a conditional statement to convert the letter inputted by the user
     :param user_response:
     :return: converted response
     # a docstring explains the purpose of a function
     """
-    if user_response == "R":
-        return "Rock"
-    elif user_response == "P":
-        return "Paper"
-    elif user_response == "S":
-        return "Scissors"
-    else:
-        return "Invalid answer"
-# double equality operators - is the user response equal to the string?
-# function has a parameter, making it more reusable
-# if statement is used for conditional execution - if initial condition is not true, the program will check the other conditions (elif, else)
+    user_choice = {'R': 'Rock', 'P': 'Paper', 'S': 'Scissors'}
+    return user_choice[user_response]
 
-def computer_conversion(computer_choice):
+
+def retrieve_computer_response():
+    return random.randint(0, 2)
+    # computer generates random number between both integers
+
+def convert_computer_response(computer_response):
     """
     This function uses a conditional statement to convert the randomised integer into a string
-    :param computer_choice:
+    :param computer_response:
     :return: converted computer response
 
     """
-    if computer_choice == 0:
-        return "Rock"
-    elif computer_choice == 1:
-        return "Paper"
-    else:
-        return "Scissors"
-# computer_choice will output an integer
-# return a string
+    computer_choice = {0: 'Rock', 1: 'Paper', 2: 'Scissors'}
+    return computer_choice[computer_response]
+
 
 def determine_winner(user_response, computer_choice):
     """
@@ -54,7 +55,7 @@ def determine_winner(user_response, computer_choice):
     if user_response == computer_choice:
         return "It's a draw!"
     # if both values are equal to each other (equality operator)
-    if outcomes[user_response] == computer_choice:
+    elif outcomes[user_response] == computer_choice:
         return "You win!"
     # [] looks up the key in the dictionary, if the value is = to the computer's choice, the user wins
     # if the key does not match up to the computer's choice, the user loses
@@ -62,29 +63,27 @@ def determine_winner(user_response, computer_choice):
         return "You lose!"
 
 
-def rock_paper_scissors():
+def play_game():
     # opening command
     welcome = "Rock,Paper or Scissors?"
     print(welcome)
-    # prompt for user
-    user_response = input("Please select R, P or S: ").upper()
-    # input function returns outputs value entered by the user
-    print(f"You have selected {user_conversion(user_response)}")
-    # computer generates random number between both integers
-    computer_choice = random.randint(0, 2)
-    # returns a random integer between a and b
+
+    user_input = retrieve_user_response()
+    converted_user_input = convert_user_response(user_input)
+
+    computer_input = retrieve_computer_response()
+    converted_computer_input = convert_computer_response(computer_input)
+    
+    print(f"You have selected {converted_user_input}")
     # prints the computer's choice (converted from integer)
-    print(f"The computer has chosen {computer_conversion(computer_choice)}")
+    print(f"The computer has chosen {converted_computer_input}")
     # f string inputs the variable alongside the function inside the string
     # applies function and compares both responses to determine the winner
-    winner = determine_winner(user_conversion(user_response), computer_conversion(computer_choice))
+    winner = determine_winner(converted_user_input, converted_computer_input)
     print(winner)
 
-rock_paper_scissors()
-
-# THE MAIN TRICK
-if __name__ == "__rock_paper_scissors__":
-    rock_paper_scissors()
+if __name__ == "__main__":
+    play_game()
 
 # game logic (test code) is extracted inside main() function (in this case rock_paper_scissors)
 # ensure script is only run when executed directly - can import to another program and choose to run the game
