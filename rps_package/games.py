@@ -129,7 +129,7 @@ def play_round(num_players, player1_score, player2_score, player1_special_move_a
 
 def play_game():
     """
-    Manages the overall game flow, including initializing scores and handling multiple rounds.
+    Manages the game flow, including initialising scores and  multiple rounds.
     """
     print("\nWelcome to Rock, Paper, Scissors - with a Marvel twist!")
     num_players = number_of_players()
@@ -164,7 +164,7 @@ def main():
     test_choice = player_choice("Player 1", special_move_available=True)
     print(f"Player 1 chose: {test_choice}")
 
-    # Initialize variables for play_round
+    # Initialise variables for play_round
     num_players = 1  # 1 player (vs computer)
     player1_score = 0
     player2_score = 0
