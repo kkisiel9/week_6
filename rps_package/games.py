@@ -184,5 +184,7 @@ def main():
 
 # Run the main function
 if __name__ == "__main__":
-    main()
+    play_game()
+    # you can use the main() to test just the def test function
+    # main()
 
