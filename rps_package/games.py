@@ -1,6 +1,8 @@
+# main_game.py
 import random
 import time
-from choice_display import display_choice
+from choice_display import display_choice, display_home_page
+
 # Special Moves
 SPECIAL_MOVES = {
     "T": "Thanos"  # Thanos evaporates everything but can only be used once per game
@@ -51,9 +53,9 @@ def player_choice(player_name, special_move_available):
 def computer_choice():
     """
     Generates a random choice for the computer.
-    :return: The computer's choice (R, P, or S).
+    :return: The computer's choice (R, P, or S, T).
     """
-    choices = ["R", "P", "S"]
+    choices = ["R", "P", "S", "T"]
     return random.choice(choices)
 
 def determine_winner(player1_choice, player2_choice, player2_name="Computer"):
@@ -82,7 +84,16 @@ def display_users_choice(choice):
     if choice in display_choice:
         print(display_choice[choice])
     elif choice == 'T':
-        print("\n Thanos! Everything evaporates! \n")
+        print("\n Thanos! Evaporates ALL! \n")
+
+def countdown():
+    """
+    Displays a countdown.
+    """
+    for i in range(3, 0, -1):
+        print(f"{i}...")
+        time.sleep(1)
+    print("Go!")
 
 def play_round(num_players, player1_score, player2_score, player1_special_move_available, player2_special_move_available):
     """
@@ -110,11 +121,11 @@ def play_round(num_players, player1_score, player2_score, player1_special_move_a
 
     print(f"\nPlayer 1 chose: {convert_choice(player1_choice)}")
     display_users_choice(player1_choice)
-    time.sleep(2)  # Added for dramatic effect
+    time.sleep(1)  # Added for dramatic effect
 
     print(f"{player2_name} chose: {convert_choice(player2_choice)}")
     display_users_choice(player2_choice)
-    time.sleep(2)
+    time.sleep(1)
 
     result = determine_winner(player1_choice, player2_choice, player2_name)
     print("\n" + result + "\n")
@@ -129,7 +140,7 @@ def play_round(num_players, player1_score, player2_score, player1_special_move_a
 
 def play_game():
     """
-    Manages the game flow, including initialising scores and  multiple rounds.
+    Manages the game flow, including initialising scores and multiple rounds.
     """
     print("\nWelcome to Rock, Paper, Scissors - with a Marvel twist!")
     num_players = number_of_players()
@@ -144,6 +155,7 @@ def play_game():
     while player1_score < 2 and player2_score < 2:
         rounds_played += 1
         print(f"\nRound {rounds_played}!")
+        countdown()
         player1_score, player2_score, player1_special_move_available, player2_special_move_available = play_round(
             num_players, player1_score, player2_score, player1_special_move_available, player2_special_move_available
         )
@@ -157,34 +169,12 @@ def play_game():
     print("\nThanks for playing! Final Scores:")
     print(f"Player 1: {player1_score}, {num_players == 1 and 'Computer' or 'Player 2'}: {player2_score}")
 
-
 def main():
-    # Test player_choice function
-    print("Testing player_choice function...")
-    test_choice = player_choice("Player 1", special_move_available=True)
-    print(f"Player 1 chose: {test_choice}")
-
-    # Initialise variables for play_round
-    num_players = 1  # 1 player (vs computer)
-    player1_score = 0
-    player2_score = 0
-    player1_special_move_available = True
-    player2_special_move_available = True
-
-    # Test play_round function
-    print("\nTesting play_round function...")
-    player1_score, player2_score, player1_special_move_available, player2_special_move_available = play_round(
-        num_players, player1_score, player2_score, player1_special_move_available, player2_special_move_available
-    )
-
-    # Print results
-    print(f"\nUpdated Scores - Player 1: {player1_score}, Computer: {player2_score}")
-    print(f"Player 1 special move available: {player1_special_move_available}")
-    print(f"Player 2 special move available: {player2_special_move_available}")
+    # Display the home page
+    display_home_page()
+    # Start the game
+    play_game()
 
 # Run the main function
 if __name__ == "__main__":
-    play_game()
-    # you can use the main() to test just the def test function
-    # main()
-
+    main()
