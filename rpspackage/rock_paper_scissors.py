@@ -1,6 +1,7 @@
 from rpspackage.game_functions import *
 # importing all functions
 import score
+# importing score file
 
 def play_game():
 
@@ -9,6 +10,7 @@ def play_game():
 
     welcome = "Rock,Paper or Scissors?"
     border = "#" * (len(welcome))
+
     print(border)
     print(welcome)
     print (border)
@@ -16,12 +18,7 @@ def play_game():
 
     while True:
         user_input = retrieve_user_response()
-        if user_input is None:
-            print("Invalid choice. Game over!")
-            break
-        # variable - get user response
-        # if return is none the loop breaks and starts over until the user inputs a valid response
-
+        # get user input (contains a loop that keeps prompting user until a valid option is entered)
         converted_user_input = convert_user_response(user_input)
         # variable - converted user response
         computer_input = retrieve_computer_response()
@@ -52,9 +49,11 @@ def play_game():
             if user_replay is None:
                 print("Invalid response. Please enter 'Y' for Yes or 'N' for No.")
             # condition if input is invalid
+            # function loops again is input is invalid
             else:
                 break
-        #  correct answer - loop breaks
+        #  correct answer - function returns and exits loop
+        # true/false - Y/N break exits loop allowing game to proceed/end
 
         if not user_replay:
             #  if play again is false (No)

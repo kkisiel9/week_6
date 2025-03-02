@@ -71,7 +71,7 @@ def determine_winner(user_response, computer_choice):
 
 def play_again():
     """
-    Asks the user if they want to play again.
+    This function asks the user if they want to play again.
     :return: boolean - Returns True for Yes, False for No.
     """
     while True:
@@ -82,5 +82,5 @@ def play_again():
             return False
         return None
 # loop ensures a valid response
-# true - continue playing otherwise exit game
+# true/false - Y/N break exits loop allowing game to proceed/end
 # invalid answer - returns None (prompts user in game)
