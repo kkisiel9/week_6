@@ -1,31 +1,35 @@
 import random
+# random variable generator
 
-import score
-# created five functions
-
+# created five functions - get user response, convert, get computer response, convert, compare both values and determine winner, play again?
 def retrieve_user_response():
     """
-    This function uses a dictionary to validate the user's response
-    :return:
+    This function uses a list to validate the user's response.
+    The user is prompted to enter R,P or S
+    :return: user_response
+    # a docstring explains the purpose of a function
     """
-    user_options = {'R', 'P','S'}
-    # prompt for user
+    user_options = ['R', 'P','S']
+    # The list shows the valid options of the user
     while True:
         user_response = input("Please select R, P or S: ").upper()
-        # input function returns outputs value entered by the user
+        # input function returns outputs value entered by the user and converts it to uppercase
         if user_response in user_options:
             return user_response
+# The loop ensures the user enters a valid response
+# conditional statement - function only returns the user response if it's within the sequence of valid options
+# continuously prompts user until valid answer is entered
+
 
 def convert_user_response(user_response):
     """
-    This function uses a conditional statement to convert the letter inputted by the user
+    This function uses a dictionary to convert the letter inputted by the user into the full word representation
     :param user_response:
-    :return: converted response
-    # a docstring explains the purpose of a function
+    :return: string - converted response
     """
     user_choice = {'R': 'Rock', 'P': 'Paper', 'S': 'Scissors'}
     return user_choice[user_response]
-
+# returns the corresponding word - looking up the key (user_response) and its value - the converted word
 
 def retrieve_computer_response():
     return random.randint(0, 2)
@@ -33,14 +37,13 @@ def retrieve_computer_response():
 
 def convert_computer_response(computer_response):
     """
-    This function uses a conditional statement to convert the randomised integer into a string
+    This function uses a dictionary to convert the randomised integer into a string
     :param computer_response:
     :return: converted computer response
-
     """
     computer_choice = {0: 'Rock', 1: 'Paper', 2: 'Scissors'}
     return computer_choice[computer_response]
-
+# returns the corresponding word - looking up the key (computer_response) and its value - the converted word
 
 def determine_winner(user_response, computer_choice):
     """
@@ -67,50 +70,17 @@ def determine_winner(user_response, computer_choice):
         return "You lose!"
 
 def play_again():
-    """Asks the user if they want to play again. Returns True for Yes, False for No."""
+    """
+    Asks the user if they want to play again.
+    :return: boolean - Returns True for Yes, False for No.
+    """
     while True:
-        user_input = input("\nDo you want to play again? (Y/N): ").upper()
+        user_input = input("\n Do you want to play again? (Y/N): ").upper()
         if user_input == "Y":
             return True
         elif user_input == "N":
             return False
-        print("Invalid response. Please enter 'Y' for Yes or 'N' for No.")
-
-# def play_game():
-#     # opening command
-#     game_score = score.starting_score()
-#     welcome = "Rock,Paper or Scissors?"
-#     print(welcome)
-#
-#     while True:
-#         user_input = retrieve_user_response()
-#         if user_input is None:
-#             print("Invalid choice. Game over!")
-#             break
-#         converted_user_input = convert_user_response(user_input)
-#         computer_input = retrieve_computer_response()
-#         converted_computer_input = convert_computer_response(computer_input)
-#
-#         print(f"You have selected {converted_user_input}")
-#         # prints the computer's choice (converted from integer)
-#         print(f"The computer has chosen {converted_computer_input}")
-#         # f string inputs the variable alongside the function inside the string
-#         # applies function and compares both responses to determine the winner
-#         winner = determine_winner(converted_user_input, converted_computer_input)
-#         print(winner)
-#
-#         score.updating_score(game_score,determine_winner(converted_user_input,converted_computer_input))
-#         score.display_score(game_score)
-#         print(score.display_score(game_score))
-#
-#         if not play_again():
-#             print("Thank you for playing! The final score is:")
-#             print(score.display_score(game_score))
-#             break
-#
-# if __name__ == "__main__":
-#     play_game()
-
-# game logic (test code) is extracted inside main() function (in this case rock_paper_scissors)
-# ensure script is only run when executed directly - can import to another program and choose to run the game
-# name is a special attribute (dunda)
+        return None
+# loop ensures a valid response
+# true - continue playing otherwise exit game
+# invalid answer - returns None (prompts user in game)
