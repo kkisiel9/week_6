@@ -1,27 +1,10 @@
 # choice_display.py
 
-# ASCII art for Choices
+#  art for Choices
 display_choice = {
-    "R": """
-        _______
-    ---'   ____)
-          (_____)
-          (_____)
-          (____) """,
-    "P": """
-        _______
-    ---'   ____)____
-              ______)
-              _______)
-             _______)
-    """,
-    "S": """
-        _______
-    ---'   ____)____
-              ______)
-          (____)
-    ---.__(___)
-    """,
+    "R": """🪨""",
+    "P": """📄""",
+    "S": """✃""",
     "T": """
         *********
     ---'   *****)____
@@ -33,9 +16,20 @@ display_choice = {
 
 def display_home_page():
     """
-    Displays the home page with art for choices and options for the player.
+    Displays the home page with a banner, ASCII art for choices, and options for the player.
     """
-    print("Welcome to Rock, Paper, Scissors - with a Marvel twist!")
+    # Banner for the welcome message
+    banner = """
+    *********************************************
+                                               
+        Welcome to Rock, Paper, Scissors - with  
+                  a Marvel twist!             
+                                               
+    *********************************************
+    """
+    print(banner)
+
+
     # Display options
     print("\nChoose an option:")
     print("1. Start Game")
@@ -43,7 +37,8 @@ def display_home_page():
     print("3. Exit")
 
     print("\nHere are your choices:")
-    # Display art for each choice
+
+    # Display ASCII art for each choice
     print("\nRock (R):")
     print(display_choice["R"])
 
@@ -55,4 +50,6 @@ def display_home_page():
 
     print("\nThanos (T):")
     print(display_choice["T"])
+
+
 
