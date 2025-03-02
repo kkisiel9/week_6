@@ -75,7 +75,7 @@ def play_again():
     :return: boolean - Returns True for Yes, False for No.
     """
     while True:
-        user_input = input("\n Do you want to play again? (Y/N): ").upper()
+        user_input = input("\nDo you want to play again? (Y/N): ").upper()
         if user_input == "Y":
             return True
         elif user_input == "N":

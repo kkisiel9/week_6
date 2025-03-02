@@ -1,4 +1,4 @@
-from rpspackage.game_functions import *
+from game_functions import *
 # importing all functions
 import score
 # importing score file
@@ -13,7 +13,7 @@ def play_game():
 
     print(border)
     print(welcome)
-    print (border)
+    print(border)
     # opening command
 
     while True:
@@ -57,8 +57,10 @@ def play_game():
 
         if not user_replay:
             #  if play again is false (No)
+            print("\n" + "#" * 40)
             print("Thank you for playing! The final score is:")
             print(score.display_score(game_score))
+            print("#" * 40)
             break
         # exit loop and game ends
 
