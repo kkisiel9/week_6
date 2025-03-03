@@ -108,6 +108,7 @@ def play_round(num_players, player1_score, player2_score, player1_special_move_a
     :return: Updated scores and special move availability.
     """
     print("\n" + "*" * 30)
+    countdown()
     player1_choice = player_choice("Player 1", player1_special_move_available)
     if player1_choice == 'T':
         player1_special_move_available = False
