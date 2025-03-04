@@ -7,7 +7,7 @@ from choice_display import display_choice, display_home_page
 SPECIAL_MOVES = {
     "T": "Thanos"  # Thanos evaporates everything but can only be used once per game
 }
-# Sami
+
 def convert_choice(choice):
     """
     Converts shorthand choices (R, P, S, T) to their full names.
@@ -21,7 +21,7 @@ def convert_choice(choice):
         "T": "Thanos"
     }
     return choice_dict.get(choice, "Invalid Choice")
-#Aiman
+
 def number_of_players():
     """
     Prompts the user to choose the number of players (1 or 2).
@@ -49,7 +49,7 @@ def player_choice(player_name, special_move_available):
             return choice
         else:
             print("Invalid input. Please enter R, P, S, or T (if available).")
-# Anita
+
 def computer_choice():
     """
     Generates a random choice for the computer.
@@ -76,7 +76,7 @@ def determine_winner(player1_choice, player2_choice, player2_name="Computer"):
     else:
         return f"{player2_name} wins!"
 
-# Kinga
+
 def display_users_choice(choice):
     """
     Displays users choice for the chosen move.
@@ -96,7 +96,7 @@ def countdown():
         time.sleep(1)
     print("Go!")
 
-# Salma
+
 def play_round(num_players, player1_score, player2_score, player1_special_move_available, player2_special_move_available):
     """
     Plays a single round of the game.
@@ -141,7 +141,7 @@ def play_round(num_players, player1_score, player2_score, player1_special_move_a
     print(f"Score - Player 1: {player1_score}, {player2_name}: {player2_score}")
     return player1_score, player2_score, player1_special_move_available, player2_special_move_available
 
-# Everyone
+
 def play_game():
     """
     Manages the game flow, including initialising scores and multiple rounds.
@@ -155,7 +155,7 @@ def play_game():
     player2_special_move_available = True
     rounds_played = 0
 
-    # Best of 3 logic
+    # Play again question
     while True:
         player1_score, player2_score, player1_special_move_available, player2_special_move_available = play_round(
             num_players, player1_score, player2_score, player1_special_move_available, player2_special_move_available
